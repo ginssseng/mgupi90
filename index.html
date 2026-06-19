@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>90 лет МГУПИ — Юбилейный портал</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ══════════════ PRELOADER ══════════════ -->
+<div id="preloader" class="preloader">
+  <canvas id="preloaderCanvas" class="pl-canvas"></canvas>
+  <div class="pl-content">
+    <div class="pl-emblem">
+      <svg viewBox="0 0 140 140" fill="none">
+        <circle class="pe-c1" cx="70" cy="70" r="64" stroke="#1E3A8A" stroke-width="1"/>
+        <circle class="pe-c2" cx="70" cy="70" r="50" stroke="#2563EB" stroke-width="0.7"/>
+        <circle class="pe-c3" cx="70" cy="70" r="36" stroke="#3B82F6" stroke-width="0.5"/>
+        <polygon class="pe-tri" points="70,20 112,90 28,90" fill="none" stroke="#60A5FA" stroke-width="1.2"/>
+        <line class="pe-ln" x1="70" y1="20" x2="70" y2="90" stroke="#93C5FD" stroke-width="0.5"/>
+        <circle class="pe-dot" cx="70" cy="70" r="5" fill="#3B82F6"/>
+      </svg>
+    </div>
+    <div class="pl-title">
+      <span class="pl-l">М</span><span class="pl-l">Г</span><span class="pl-l">У</span><span class="pl-l">П</span><span class="pl-l">И</span>
+    </div>
+    <div class="pl-sub">Юбилейный портал · 90 лет</div>
+    <div class="pl-track"><div class="pl-fill" id="plFill"></div></div>
+    <div class="pl-pct"><span id="plPct">0</span>%</div>
+  </div>
+</div>
+
+<!-- ══════════════ NAVIGATION ══════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">
+      <span class="nl-name">МГУПИ</span>
+      <span class="nl-badge">90</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a class="nav-link" href="#rector">Ректор</a></li>
+      <li><a class="nav-link" href="#timeline">История</a></li>
+      <li><a class="nav-link" href="#facts">Факты</a></li>
+      <li><a class="nav-link nav-cta" href="#capsule">Капсула</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="hero">
+  <canvas id="heroCanvas" class="hero-canvas"></canvas>
+
+  <!-- Perspective grid floor -->
+  <div class="hero-pgrid" aria-hidden="true">
+    <canvas id="gridCanvas" class="grid-canvas"></canvas>
+  </div>
+
+  <!-- 3D decorative scene -->
+  <div class="hero-3d-scene" aria-hidden="true">
+    <!-- Wireframe cubes -->
+    <div class="cube3d cube-a" style="--sz:90px; --top:12%; --left:52%; --spd:18s; --rx:20deg;">
+      <div class="cf front"></div><div class="cf back"></div>
+      <div class="cf left"></div><div class="cf right"></div>
+      <div class="cf top"></div><div class="cf bottom"></div>
+    </div>
+    <div class="cube3d cube-b" style="--sz:50px; --top:70%; --left:58%; --spd:13s; --rx:-10deg;">
+      <div class="cf front"></div><div class="cf back"></div>
+      <div class="cf left"></div><div class="cf right"></div>
+      <div class="cf top"></div><div class="cf bottom"></div>
+    </div>
+    <div class="cube3d cube-c" style="--sz:120px; --top:55%; --left:88%; --spd:22s; --rx:30deg;">
+      <div class="cf front"></div><div class="cf back"></div>
+      <div class="cf left"></div><div class="cf right"></div>
+      <div class="cf top"></div><div class="cf bottom"></div>
+    </div>
+    <!-- 3D rings -->
+    <div class="ring3d rng-1"></div>
+    <div class="ring3d rng-2"></div>
+    <div class="ring3d rng-3"></div>
+    <!-- Floating orbs -->
+    <div class="orb3d orb-a"></div>
+    <div class="orb3d orb-b"></div>
+    <div class="orb3d orb-c"></div>
+  </div>
+
+  <!-- SPLIT LAYOUT -->
+  <div class="hero-split">
+    <!-- LEFT: Giant 90 -->
+    <div class="hero-left" id="heroLeft">
+      <div class="num90-wrap">
+        <div class="num90" id="num90">
+          <!-- Layers injected by JS -->
+          <span class="num90-spacer" aria-hidden="true">90</span>
+          <span class="num90-face" aria-label="90">90</span>
+        </div>
+        <div class="num90-glow" aria-hidden="true">90</div>
+        <div class="num90-reflect" aria-hidden="true">90</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Text -->
+    <div class="hero-right" id="heroRight">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
+        <span>1936 — 2026</span>
+      </div>
+      <h1 class="hero-heading">
+        <span class="hh-1">лет</span>
+        <span class="hh-2">МГУПИ</span>
+      </h1>
+      <p class="hero-desc">
+        Московский государственный<br>университет приборостроения<br>и информатики
+      </p>
+      <div class="hero-stats">
+        <div class="hstat">
+          <div class="hstat-val" data-count="90">0</div>
+          <div class="hstat-lbl">лет истории</div>
+        </div>
+        <div class="hstat-sep"></div>
+        <div class="hstat">
+          <div class="hstat-val" data-count="50">0</div>
+          <div class="hstat-lbl">кафедр</div>
+        </div>
+        <div class="hstat-sep"></div>
+        <div class="hstat">
+          <div class="hstat-val" data-count="11">0</div>
+          <div class="hstat-lbl">факультетов</div>
+        </div>
+      </div>
+      <a class="hero-btn" href="#timeline">
+        <span>Узнать историю</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 3L13 8L8 13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue" id="heroScrollCue">
+    <div class="scroll-mouse"><div class="scroll-wh"></div></div>
+    <span>скролл</span>
+  </div>
+</section>
+
+<!-- ══════════════ RECTOR ══════════════ -->
+<section class="rector-section" id="rector">
+  <div class="rector-slash" aria-hidden="true"></div>
+  <div class="rector-3d-decor" aria-hidden="true">
+    <div class="cube3d rd-cube-1" style="--sz:70px;--top:10%;--left:5%;--spd:20s;--rx:15deg;">
+      <div class="cf front"></div><div class="cf back"></div>
+      <div class="cf left"></div><div class="cf right"></div>
+      <div class="cf top"></div><div class="cf bottom"></div>
+    </div>
+    <div class="ring3d rd-ring-1"></div>
+  </div>
+  <div class="container">
+    <div class="rector-grid">
+      <div class="rector-photo-col reveal-e">
+        <div class="rector-frame">
+          <div class="rector-avatar">
+            <img src="images/rekror.jpg" alt="avatar">
+          </div>
+          <span class="rf-c tl"></span><span class="rf-c tr"></span>
+          <span class="rf-c bl"></span><span class="rf-c br"></span>
+          <div class="rector-badge">
+            <strong>Кудж Станислав Алексеевич</strong>
+            <span>Ректор РТУ МИРЭА</span>
+          </div>
+        </div>
+      </div>
+      <div class="rector-text-col">
+        <div class="rector-tag reveal-e" data-d="100">Поздравление ректора</div>
+        <h2 class="rector-h2 reveal-e" data-d="180">
+          Слово<br><em>ректора РТУ МИРЭА</em>
+        </h2>
+        <div class="rector-quote reveal-e" data-d="260">
+          <span class="qm qm-open">«</span>
+          <p>Девяносто лет — это не просто дата. Это девяносто лет знаний, переданных тысячам студентов, ставших инженерами, учёными, созидателями. МГУПИ прошёл путь от небольшого заочного института до мощного научного и образовательного центра, вписав своё имя в историю отечественной высшей школы.</p>
+          <p>Сегодня, войдя в состав РТУ МИРЭА, традиции МГУПИ живут и приумножаются. Мы чтим прошлое и уверенно смотрим в будущее — в будущее, которое строят наши студенты и выпускники.</p>
+          <p>С юбилеем, дорогие коллеги, студенты и выпускники! Пусть каждое новое десятилетие приносит новые открытия и достижения!</p>
+          <span class="qm qm-close">»</span>
+        </div>
+        <div class="rector-sig reveal-e" data-d="340">
+          <span class="rs-dash"></span>
+          <span>С.А. Кудж, ректор РТУ МИРЭА · 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ TIMELINE ══════════════ -->
+<section class="timeline-section" id="timeline">
+  <div class="tl-bg-decor" aria-hidden="true">
+    <div class="tl-bg-num">90</div>
+    <div class="cube3d tl-cube-1" style="--sz:80px;--top:5%;--left:92%;--spd:25s;--rx:10deg;">
+      <div class="cf front"></div><div class="cf back"></div>
+      <div class="cf left"></div><div class="cf right"></div>
+      <div class="cf top"></div><div class="cf bottom"></div>
+    </div>
+    <div class="cube3d tl-cube-2" style="--sz:55px;--top:80%;--left:2%;--spd:17s;--rx:25deg;">
+      <div class="cf front"></div><div class="cf back"></div>
+      <div class="cf left"></div><div class="cf right"></div>
+      <div class="cf top"></div><div class="cf bottom"></div>
+    </div>
+    <div class="ring3d tl-ring-1"></div>
+    <div class="ring3d tl-ring-2"></div>
+  </div>
+  <div class="container">
+    <div class="section-header">
+      <div class="sh-tag reveal-e">Хронология</div>
+      <h2 class="sh-title reveal-e" data-d="100">90 лет истории</h2>
+      <p class="sh-sub reveal-e" data-d="160">От первых пятилеток до цифровой эпохи</p>
+    </div>
+
+    <div class="timeline" id="timelineEl">
+      <div class="tl-spine"><div class="tl-fill" id="tlFill"></div></div>
+
+      <div class="tl-item tl-l tl-anim">
+        <div class="tl-era-bg era-1936"><div class="era-overlay"></div></div>
+        <div class="tl-node"></div>
+        <div class="tl-card">
+          <div class="tc-year">1936</div>
+          <h3>Рождение</h3>
+          <p>Приказом Наркомата местной промышленности РСФСР № 1168 от 16 сентября основан Московский заочный институт металлообрабатывающей промышленности (МЗИМП) — для подготовки инженерных кадров индустриализации.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-r tl-anim">
+        <div class="tl-era-bg era-1937"><div class="era-overlay"></div></div>
+        <div class="tl-node"></div>
+        <div class="tl-card">
+          <div class="tc-year">1937</div>
+          <h3>Сеть по всей стране</h3>
+          <p>Создана широкая сеть учебных филиалов и консультационных пунктов в Ленинграде, Крыму, Горьком, Кирове — подготовка инженеров охватывает все регионы СССР.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-l tl-anim">
+        <div class="tl-era-bg era-1941"><div class="era-overlay"></div></div>
+        <div class="tl-node"></div>
+        <div class="tl-card">
+          <div class="tc-year">1941–1945</div>
+          <h3>Военные годы</h3>
+          <p>Институт не эвакуировался из Москвы — продолжал готовить специалистов для оборонной промышленности. Преподаватели участвовали в возведении укрепрайонов. В 1945-м работа возобновилась в полном объёме.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-r tl-anim">
+        <div class="tl-era-bg era-1950"><div class="era-overlay"></div></div>
+        <div class="tl-node"></div>
+        <div class="tl-card">
+          <div class="tc-year">1950</div>
+          <h3>ВЗМИ — новый этап</h3>
+          <p>Распоряжением Совета Министров СССР МЗИМП реорганизован во Всесоюзный заочный машиностроительный институт (ВЗМИ) — переход к масштабной подготовке инженеров для всего народного хозяйства страны.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-l tl-anim">
+        <div class="tl-era-bg era-1960"><div class="era-overlay"></div></div>
+        <div class="tl-node"></div>
+        <div class="tl-card">
+          <div class="tc-year">1960–1980</div>
+          <h3>Эпоха расцвета</h3>
+          <p>ВЗМИ — один из крупнейших технических вузов СССР: около 25 000 студентов. Активная модернизация лабораторной базы, масштабные научные исследования, тесное взаимодействие с промышленностью.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-r tl-anim">
+        <div class="tl-era-bg era-1980"><div class="era-overlay"></div></div>
+        <div class="tl-node"></div>
+        <div class="tl-card">
+          <div class="tc-year">1980</div>
+          <h3>Вычислительный прорыв</h3>
+          <p>Создан один из крупнейших вузовских вычислительных центров страны на базе ЭВМ ЕС-1033 — впоследствии Главный информационно-вычислительный центр Минобрнауки России.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-l tl-anim">
+        <div class="tl-era-bg era-1988"><div class="era-overlay"></div></div>
+        <div class="tl-node"></div>
+        <div class="tl-card">
+          <div class="tc-year">1988</div>
+          <h3>Институт приборостроения</h3>
+          <p>Постановлением Совета Министров СССР ВЗМИ преобразован в Московский институт приборостроения с дневной, вечерней и заочной формами. Начало открытой подготовки.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-r tl-anim">
+        <div class="tl-era-bg era-1994"><div class="era-overlay"></div></div>
+        <div class="tl-node"></div>
+        <div class="tl-card">
+          <div class="tc-year">1994</div>
+          <h3>МГАПИ</h3>
+          <p>1 июля — переименование в Московскую государственную академию приборостроения и информатики (МГАПИ). Новые факультеты: информатики, технических систем с ИИ, гуманитарный.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-l tl-anim">
+        <div class="tl-era-bg era-2005"><div class="era-overlay"></div></div>
+        <div class="tl-node"></div>
+        <div class="tl-card">
+          <div class="tc-year">2005</div>
+          <h3>Университет — МГУПИ</h3>
+          <p>Приказом Рособразования № 1703 академия стала Московским государственным университетом приборостроения и информатики. 11 факультетов, 50 кафедр, 11 филиалов.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-r tl-anim">
+        <div class="tl-era-bg era-2010"><div class="era-overlay"></div></div>
+        <div class="tl-node"></div>
+        <div class="tl-card">
+          <div class="tc-year">2010</div>
+          <h3>Инновационная площадка</h3>
+          <p>Решением Минобрнауки РФ МГУПИ присвоен статус инновационной площадки — признание научного и образовательного потенциала университета на государственном уровне.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-l tl-anim">
+        <div class="tl-era-bg era-2015"><div class="era-overlay"></div></div>
+        <div class="tl-node"></div>
+        <div class="tl-card">
+          <div class="tc-year">2015 — сегодня</div>
+          <h3>В составе РТУ МИРЭА</h3>
+          <p>МГУПИ вошёл в состав РТУ МИРЭА, сохранив традиции и продолжив развитие — теперь как часть одного из ведущих технологических университетов России.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FACTS (HORIZONTAL SCROLL) ══════════════ -->
+<section class="facts-section" id="facts">
+  <div class="facts-3d-bg" aria-hidden="true">
+    <div class="cube3d fc-cube-1" style="--sz:60px;--top:20%;--left:3%;--spd:19s;--rx:30deg;">
+      <div class="cf front"></div><div class="cf back"></div>
+      <div class="cf left"></div><div class="cf right"></div>
+      <div class="cf top"></div><div class="cf bottom"></div>
+    </div>
+    <div class="ring3d fc-ring-1"></div>
+  </div>
+
+  <div class="container">
+    <div class="section-header">
+      <div class="sh-tag reveal-e">Интересное</div>
+      <h2 class="sh-title reveal-e" data-d="100">Малоизвестные факты</h2>
+      <p class="sh-sub reveal-e" data-d="160">Потяните вправо, чтобы узнать больше →</p>
+    </div>
+  </div>
+
+  <!-- Full-width horizontal scroll -->
+  <div class="facts-scroll-outer" id="factsOuter">
+    <div class="facts-scroll-track" id="factsTrack">
+
+      <div class="fh-card fh-church">
+        <div class="fh-num">01</div>
+        <div class="fh-icon-wrap"><span class="fh-icon">⛪</span></div>
+        <div class="fh-body">
+          <h3>Церковь Петровской эпохи</h3>
+          <p>В центре внутреннего дворика кампуса МГУПИ сохранилось старинное небольшое строение — бывшая церковь. По преданию, в ней молился сам Пётр I: здание университета возведено ещё в Петровскую эпоху — за несколько веков до основания самого института.</p>
+          <div class="fh-tag">Архитектура</div>
+        </div>
+        <div class="fh-deco"></div>
+      </div>
+
+      <div class="fh-card fh-rambler">
+        <div class="fh-num">02</div>
+        <div class="fh-icon-wrap"><span class="fh-icon">🔍</span></div>
+        <div class="fh-body">
+          <h3>Создатель Rambler</h3>
+          <p>Дмитрий Витальевич Крюков (1960–2009) — выпускник МГУПИ, российский программист, автор поисковой системы «Rambler» — одной из первых поисковых систем Рунета. Интернет России начался с выпускника нашего университета.</p>
+          <div class="fh-tag">Выпускник</div>
+        </div>
+        <div class="fh-deco"></div>
+      </div>
+
+      <div class="fh-card fh-students">
+        <div class="fh-num">03</div>
+        <div class="fh-icon-wrap"><span class="fh-icon">🎓</span></div>
+        <div class="fh-body">
+          <h3>25 000 студентов</h3>
+          <p>В период 1960–1980-х годов в стенах ВЗМИ одновременно обучалось около 25 000 студентов — один из крупнейших технических вузов Советского Союза. Студентов было больше, чем жителей в некоторых районных городах.</p>
+          <div class="fh-tag">Масштаб</div>
+        </div>
+        <div class="fh-deco"></div>
+      </div>
+
+      <div class="fh-card fh-nations">
+        <div class="fh-num">04</div>
+        <div class="fh-icon-wrap"><span class="fh-icon">🌍</span></div>
+        <div class="fh-body">
+          <h3>30+ стран мира</h3>
+          <p>В начале 1990-х в МГАПИ открылся факультет для иностранных студентов, принявший представителей более чем 30 государств мира. МГУПИ стал настоящим международным инженерным домом задолго до эпохи глобализации.</p>
+          <div class="fh-tag">Международный</div>
+        </div>
+        <div class="fh-deco"></div>
+      </div>
+
+    </div>
+
+    <!-- Scroll progress -->
+    <div class="facts-progress-wrap">
+      <div class="facts-progress-track">
+        <div class="facts-progress-fill" id="factsProgress"></div>
+      </div>
+      <div class="facts-arrows">
+        <button class="fa-btn" id="faLeft" aria-label="Назад">←</button>
+        <button class="fa-btn" id="faRight" aria-label="Вперёд">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ TIME CAPSULE ══════════════ -->
+<section class="capsule-section" id="capsule">
+  <canvas id="capsuleCanvas" class="capsule-canvas"></canvas>
+  <div class="capsule-3d-decor" aria-hidden="true">
+    <div class="cube3d cp-cube-1" style="--sz:100px;--top:8%;--left:88%;--spd:21s;--rx:15deg;">
+      <div class="cf front"></div><div class="cf back"></div>
+      <div class="cf left"></div><div class="cf right"></div>
+      <div class="cf top"></div><div class="cf bottom"></div>
+    </div>
+    <div class="cube3d cp-cube-2" style="--sz:60px;--top:80%;--left:5%;--spd:16s;--rx:-20deg;">
+      <div class="cf front"></div><div class="cf back"></div>
+      <div class="cf left"></div><div class="cf right"></div>
+      <div class="cf top"></div><div class="cf bottom"></div>
+    </div>
+    <div class="ring3d cp-ring-1"></div>
+    <div class="ring3d cp-ring-2"></div>
+  </div>
+  <div class="container">
+    <div class="section-header">
+      <div class="sh-tag reveal-e">Интерактив</div>
+      <h2 class="sh-title reveal-e" data-d="100">Цифровая капсула времени</h2>
+      <p class="sh-sub reveal-e" data-d="160">Оставьте послание будущим поколениям МГУПИ</p>
+    </div>
+
+    <div class="capsule-layout">
+      <div class="capsule-left reveal-e" data-d="200">
+        <div class="vault-scene" id="vaultScene">
+          <div class="vault-ring vr-1"></div>
+          <div class="vault-ring vr-2"></div>
+          <div class="vault-ring vr-3"></div>
+          <div class="vault-ring vr-4"></div>
+          <div class="vault-core"><span>⏳</span></div>
+          <div class="vault-glow"></div>
+        </div>
+
+        <form class="capsule-form" id="capsuleForm" novalidate>
+          <div class="cf-field">
+            <input class="cf-inp" type="text" id="cfName" placeholder=" " maxlength="60" required>
+            <label class="cf-lbl" for="cfName">Ваше имя</label>
+          </div>
+          <div class="cf-field">
+            <input class="cf-inp" type="text" id="cfRole" placeholder=" " maxlength="80">
+            <label class="cf-lbl" for="cfRole">Студент / Выпускник / Преподаватель</label>
+          </div>
+          <div class="cf-field cf-ta-field">
+            <textarea class="cf-inp cf-ta" id="cfMsg" placeholder=" " rows="4" maxlength="500"></textarea>
+            <label class="cf-lbl" for="cfMsg">Послание будущему</label>
+            <span class="cf-cnt"><span id="cfCnt">0</span>/500</span>
+          </div>
+          <div class="cf-field">
+            <select class="cf-inp cf-sel" id="cfYear">
+              <option value="2036">Открыть в 2036 — 100-летие МГУПИ</option>
+              <option value="2031">Открыть в 2031 — через 5 лет</option>
+              <option value="2046">Открыть в 2046 — через 20 лет</option>
+            </select>
+            <label class="cf-lbl cf-lbl-up" for="cfYear">Год открытия</label>
+          </div>
+          <button type="submit" class="btn-seal">
+            <span>Запечатать послание</span>
+            <span class="bs-icon">🔒</span>
+          </button>
+        </form>
+        <div class="seal-success" id="sealSuccess">
+          <div class="ss-icon">✨</div>
+          <p>Ваше послание запечатано и будет ждать своего часа!</p>
+        </div>
+      </div>
+
+      <div class="capsule-right">
+        <div class="msg-hdr">
+          <h3>Голоса из капсулы</h3>
+          <span id="msgCount">0 посланий</span>
+        </div>
+        <div class="msg-wall" id="msgWall">
+          <div class="msg-empty" id="msgEmpty">
+            <div class="me-icon">📭</div>
+            <p>Капсула пуста. Станьте первым!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="fl-logo">МГУПИ</div>
+        <div class="fl-years">1936 — 2026</div>
+      </div>
+      <div class="footer-center">
+        <p>90 лет традиций инженерного образования</p>
+        <p>Ныне в составе <a href="https://www.mirea.ru" target="_blank" rel="noopener">РТУ МИРЭА</a></p>
+      </div>
+      <div class="footer-right">
+        <p>© 2026 МГУПИ / РТУ МИРЭА</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
